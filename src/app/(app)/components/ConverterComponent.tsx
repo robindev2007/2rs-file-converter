@@ -6,15 +6,16 @@ import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { convertFile } from "@/utils/convert";
 import { motion } from "framer-motion";
 import loadFfmpeg from "@/app/utils/load-ffmpeg";
-import SingleFile from "./single-file";
 import { Button } from "@/components/ui/button";
 import DropzoneSkeletone from "./dropzone-skeleton";
+import dynamic from "next/dynamic";
+
+const SingleFile = dynamic(() => import("./single-file"));
 
 const ConverterComponent = () => {
   const [files, setFiles] = useState<File[]>([]);
   const ffmpegRef = useRef<any>(null);
   const [ffmpegLoaded, setFfmpegLoaded] = useState(false);
-  const [imgSrc, setImgSrc] = useState("");
 
   const load = async () => {
     const ffmpeg_responce: FFmpeg = await loadFfmpeg();
@@ -27,48 +28,28 @@ const ConverterComponent = () => {
     load();
   }, []);
 
-  const handleConvertFIle = async ({
-    convertTo,
-    file,
-  }: {
-    file: File;
-    convertTo: string;
-  }) => {
-    const d = await convertFile({
-      convertTo,
-      file,
-      ffmpeg: ffmpegRef.current,
-    });
-    return d;
-  };
-
   const removeFileFromList = (fileName: string) => {
     const newFiles = files.filter((file) => file.name !== fileName);
     setFiles(newFiles);
   };
   return (
-    <>
-      {files.length < 1 && (
-        <Dropzone
-          setFiles={(newFiles: File[]) => setFiles([...files, ...newFiles])}
-        />
-      )}
+    <div>
+      {files.length < 1 &&
+        (ffmpegLoaded ? (
+          <Dropzone
+            setFiles={(newFiles: File[]) => setFiles([...files, ...newFiles])}
+          />
+        ) : (
+          <DropzoneSkeletone />
+        ))}
 
-      <motion.div
-        layout
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="flex gap-2 flex-col pb-14">
+      <motion.div className="flex gap-2 flex-col pb-6">
         {files?.map((file) => (
           <SingleFile
             key={`${file.name}-${file.lastModified}-${file.size}`}
             ffmpeg={ffmpegRef.current}
             ffmpegLoaded={ffmpegLoaded}
             file={file}
-            convertFile={(e) =>
-              handleConvertFIle({ convertTo: e.convertTo, file: e.file })
-            }
             removeFileFromList={removeFileFromList}
           />
         ))}
@@ -86,7 +67,7 @@ const ConverterComponent = () => {
           </Button> */}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

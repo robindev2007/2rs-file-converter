@@ -8,7 +8,7 @@ const ThemeToggler = () => {
   const { setTheme, theme } = useTheme();
   return (
     <Button
-      name="Theme Changer button"
+      title="Theme Changer button"
       size={"icon"}
       variant={"ghost"}
       onClick={() => setTheme(theme === "dark" ? "lite" : "dark")}>

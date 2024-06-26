@@ -1,13 +1,5 @@
 import Container from "@/components/ui/container";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
-import DropzoneSkeletone from "./components/dropzone-skeleton";
-
-const ConverterComponent = dynamic(
-  () => import("@/app/(app)/components/ConverterComponent"),
-
-  { ssr: false, loading: () => <DropzoneSkeletone /> }
-);
+import ConverterComponent from "./components/ConverterComponent";
 
 export default function Home() {
   return (

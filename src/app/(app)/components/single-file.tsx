@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 
 type SingleFileProps = {
   file: File;
-  convertFile: ({ file, convertTo }: { file: File; convertTo: string }) => void;
   ffmpeg: FFmpeg;
   ffmpegLoaded: boolean;
   removeFileFromList: (fileName: string) => void;
@@ -33,7 +32,6 @@ const SingleFile = ({
   const [progress, setProgress] = useState(0);
   const [convertingState, setConvertingState] =
     useState<convertingState>("initial");
-  const [error, setError] = useState(false);
 
   const [convertedData, setConvertedData] = useState<{
     url: string;
@@ -65,6 +63,16 @@ const SingleFile = ({
     });
   }, [ffmpegLoaded, ffmpeg]);
 
+  let fileSize;
+  var totalBytes = file.size;
+  if (totalBytes < 1000000) {
+    var _size = Math.floor(totalBytes / 1000) + "KB";
+    fileSize = _size;
+  } else {
+    var _size = Math.floor(totalBytes / 1000000) + "MB";
+    fileSize = _size;
+  }
+
   return (
     <motion.div
       layout
@@ -76,6 +84,7 @@ const SingleFile = ({
         <div className="flex gap-2 items-center">
           <FileIcon fileType={fileType} />
           <FileTitle title={file.name} />
+          <p className="text-muted-foreground text-sm">{fileSize}</p>
         </div>
 
         <div className="flex gap-2 items-center">
@@ -103,7 +112,10 @@ const SingleFile = ({
 
           {convertingState === "done" && (
             <Button asChild size={"sm"}>
-              <a href={convertedData?.url} download={convertedData?.output}>
+              <a
+                href={convertedData?.url}
+                className="ml-auto md:ml-0"
+                download={convertedData?.output}>
                 Download
               </a>
             </Button>
