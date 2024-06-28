@@ -7,8 +7,14 @@ const nunito = Nunito({ subsets: ["latin"], variable: "--font-nutio" });
 
 export const metadata: Metadata = {
   title: "2RS File converter",
-  description: "Online image, video and audio file converter for free.",
+  description:
+    "Online image converter, Online video and audio file converter for free.",
+  verification: {
+    google: "F34cI-FmqcyPEdSVNhug_a4m_pbKSqI6rQzQGQ-ulEs",
+  },
 };
+
+// <meta name="google-site-verification" content="F34cI-FmqcyPEdSVNhug_a4m_pbKSqI6rQzQGQ-ulEs" />
 
 export default function RootLayout({
   children,
@@ -20,8 +26,7 @@ export default function RootLayout({
       <body className={`${nunito.className} ${nunito.variable}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
           disableTransitionOnChange>
           <main className="flex flex-col min-h-screen">{children}</main>
         </ThemeProvider>

@@ -74,12 +74,11 @@ const SingleFile = ({
   }
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="bg-card rounded border overflow-hidden">
+    <div
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      className="bg-card rounded shadow-md border overflow-hidden">
       <div className="flex gap-2 md:items-center w-full p-2 justify-between flex-col md:flex-row">
         <div className="flex gap-2 items-center">
           <FileIcon fileType={fileType} />
@@ -141,14 +140,13 @@ const SingleFile = ({
         <div
           className={cn(
             "h-1 bg-green-600",
-            // convertingState === '' && "",
-            progress !== 100 && "rounded-full"
+            progress !== 100 && "rounded-r-full"
           )}
           style={{
-            width: convertingState !== "done" ? `${progress}%` : "",
+            width: convertingState !== "done" ? `${progress ?? 0}%` : "",
           }}></div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
