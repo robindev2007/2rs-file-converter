@@ -8,7 +8,7 @@ const nunito = Nunito({ subsets: ["latin"], variable: "--font-nutio" });
 export const metadata: Metadata = {
   title: "2RS File converter",
   description:
-    "Online image converter, Online video and audio file converter for free.",
+    "Convert files like images, video, and audio to other formats with this free and fast online converter.",
   verification: {
     google: "F34cI-FmqcyPEdSVNhug_a4m_pbKSqI6rQzQGQ-ulEs",
   },
