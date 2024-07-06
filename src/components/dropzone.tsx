@@ -41,7 +41,7 @@ const Dropzone = ({ setFiles }: { setFiles: (files: File[]) => void }) => {
     <div
       {...getRootProps({
         className: cn(
-          "h-48 rounded-md border-dashed border-2 transition-all flex items-center justify-center ease-out cursor-pointer bg-card flex flex-col text-center md:max-w-[70%] mx-auto w-full hover:bg-secondary/80",
+          "h-48 rounded-md border-dashed border-2 transition-all flex items-center justify-center ease-out cursor-pointer bg-card flex flex-col text-center mx-auto w-full hover:bg-secondary/80",
           isDragActive && "bg-secondary"
         ),
       })}>

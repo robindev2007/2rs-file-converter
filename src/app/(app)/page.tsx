@@ -1,10 +1,12 @@
 import Container from "@/components/ui/container";
 import ConverterComponent from "./components/ConverterComponent";
+import ServiceDetails from "./components/service-details";
+import HomePageAccordinon from "./components/home-page-accordinon";
 
 export default function Home() {
   return (
-    <Container className="flex gap-5 flex-col ">
-      <div className="pt-20 space-y-5 md:max-w-[70%] mx-auto pb-10">
+    <Container className="flex gap-7 flex-col pb-20">
+      <div className="pt-20 space-y-5 pb-10">
         <h1 className="text-5xl font-bold text-center">
           Transform Your Media Instantly Free & Lightning Fast
         </h1>
@@ -18,6 +20,8 @@ export default function Home() {
         </p>
       </div>
       <ConverterComponent />
+      <ServiceDetails />
+      <HomePageAccordinon />
     </Container>
   );
 }

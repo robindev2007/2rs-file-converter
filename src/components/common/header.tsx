@@ -38,12 +38,15 @@ const Header = () => {
         <div className="items-center gap-3 hidden md:flex">
           <ThemeToggler />
 
-          <Button asChild>
-            <Link href={"#"} className="flex gap-2">
+          {/* <Button asChild>
+            <Link
+              href={"https://github.com/robindev2007/2rs-file-converter"}
+              target="_blank"
+              className="flex gap-2">
               <FaGithub size={20} className="shrink-0" />
               Github repo
             </Link>
-          </Button>
+          </Button> */}
         </div>
 
         <HeaderMobileNav navLinks={navLinks} />
