@@ -3,7 +3,6 @@
 An online tool for converting audio, video, and image files to various formats. This project provides a simple and efficient way to handle media file conversions directly from your browser.
 
 ## Features
-
 - **Audio Conversion**: Convert between various audio formats such as MP3, WAV, OGG, and more.
 - **Video Conversion**: Support for video formats including MP4, AVI, MOV, etc.
 - **Image Conversion**: Convert images between formats like JPG, PNG, GIF, and others.
