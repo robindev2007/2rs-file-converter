@@ -1,4 +1,4 @@
-# 2RSFileConverter
+# 2RSFileConverter (audio + video)
 
 An online tool for converting audio, video, and image files to various formats. This project provides a simple and efficient way to handle media file conversions directly from your browser.
 
